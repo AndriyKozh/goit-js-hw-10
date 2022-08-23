@@ -9,20 +9,20 @@ const DEBOUNCE_DELAY = 300;
 
 const refs = {
   input: document.querySelector('input'),
-  countryMarkup: document.querySelector('.country-info'),
-  couuntryListMarkup: document.querySelector('.country-list'),
+  countryinfo: document.querySelector('.country-info'),
+  couuntryList: document.querySelector('.country-list'),
 };
 
 refs.input.addEventListener('input', debounce(onInputchange, DEBOUNCE_DELAY));
 
-function onInputchange(e) {
-  e.preventDefault();
-  const inputData = refs.input.value.trim();
-  if (inputData === '') {
-    refs.countryMarkup.innerHTML = '';
-    refs.couuntryListMarkup.innerHTML = '';
+function onInputchange(ev) {
+  ev.preventDefault();
+  const nameCountryData = ev.target.value.trim();
+  if (nameCountryData === '') {
+    refs.countryinfo.innerHTML = '';
+    refs.couuntryList.innerHTML = '';
   }
-  fetchCountries(inputData)
+  fetchCountries(nameCountryData)
     .then(countries => {
       countries.map(country => {
         let arrayLength = countries.length;
@@ -41,11 +41,11 @@ function onInputchange(e) {
 }
 
 function renderCountryList(markupList) {
-  refs.countryMarkup.innerHTML = '';
-  refs.couuntryListMarkup.innerHTML = markupList;
+  refs.countryinfo.innerHTML = '';
+  refs.couuntryList.innerHTML = markupList;
 }
 
 function renderCountryInfo(markup) {
-  refs.couuntryListMarkup.innerHTML = '';
-  refs.countryMarkup.innerHTML = markup;
+  refs.countryinfo.innerHTML = '';
+  refs.couuntryList.innerHTML = markup;
 }
