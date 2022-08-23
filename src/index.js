@@ -8,7 +8,7 @@ import { oneCountry, countryList } from './countries-card';
 const DEBOUNCE_DELAY = 300;
 
 const refs = {
-  input: document.querySelector('input'),
+  input: document.querySelector('#search-box'),
   countryinfo: document.querySelector('.country-info'),
   couuntryList: document.querySelector('.country-list'),
 };
@@ -22,22 +22,7 @@ function onInputchange(ev) {
     refs.countryinfo.innerHTML = '';
     refs.couuntryList.innerHTML = '';
   }
-  fetchCountries(nameCountryData)
-    .then(countries => {
-      countries.map(country => {
-        let arrayLength = countries.length;
-        if (arrayLength === 1) {
-          const markup = oneCountry(country);
-          renderCountryInfo(markup);
-        } else if (arrayLength > 10) {
-          manyFound();
-        } else if (arrayLength > 1) {
-          const markupList = countryList(countries);
-          renderCountryList(markupList);
-        }
-      });
-    })
-    .catch(noCountryError);
+  fetchCountries(nameCountryData).then(filterLength).catch(noCountryError);
 }
 
 function renderCountryList(markupList) {
@@ -48,4 +33,19 @@ function renderCountryList(markupList) {
 function renderCountryInfo(markup) {
   refs.countryinfo.innerHTML = '';
   refs.couuntryList.innerHTML = markup;
+}
+
+function filterLength(countries) {
+  countries.map(country => {
+    let arrayLength = countries.length;
+    if (arrayLength === 1) {
+      const markup = oneCountry(country);
+      renderCountryInfo(markup);
+    } else if (arrayLength > 10) {
+      manyFound();
+    } else if (arrayLength > 1) {
+      const markupList = countryList(countries);
+      renderCountryList(markupList);
+    }
+  });
 }

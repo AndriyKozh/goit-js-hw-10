@@ -34,7 +34,7 @@ const countryList = function (countryArray) {
   return countryArray
     .map(
       country => `  <li class="country-flag">
-      <img src="${country.flags.svg}" alt="flag"  width='30'>
+      <img class="country-flag__img" src="${country.flags.svg}" alt="flag"  width='30'>
       <p class="country-name">${country.name.official}</p>
     </li>`
     )
