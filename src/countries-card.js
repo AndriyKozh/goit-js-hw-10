@@ -4,7 +4,7 @@ const oneCountry = function ({ name, capital, population, flags, languages }) {
   let langList = Object.values(languages);
 
   return ` <div class="country-content">
-        <img src="${flags.svg}" alt="flag" width="213" height="100" />
+        <img src="${flags.svg}" alt="flag" width="800" height="300" />
         <h1 class="country-content__name">${name.official}</h1>
       </div>
 

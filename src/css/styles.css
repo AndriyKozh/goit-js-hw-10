@@ -31,10 +31,14 @@ input {
   margin-top: 50px;
 }
 .country-description__text {
+  font-size: 32px;
   font-weight: bold;
 }
+.country-content__name {
+  font-size: 42px;
+}
 .country-description__info {
-  font-weight: 400px;
+  font-size: 24px;
 }
 .country-list {
   margin-left: 50px;
@@ -51,4 +55,10 @@ input {
 }
 .country-name {
   font-weight: bold;
+}
+.country-content {
+  text-align: center;
+}
+.country-description {
+  text-align: center;
 }

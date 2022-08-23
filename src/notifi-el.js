@@ -2,6 +2,9 @@ import Notiflix from 'notiflix';
 
 const notifyEfect = {
   timeout: 1000,
+  width: '700px',
+  height: '150px',
+
   showOnlyTheLastOne: true,
   clickToClose: true,
 };
